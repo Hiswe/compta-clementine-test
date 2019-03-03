@@ -1,0 +1,14 @@
+{
+  "name": "compta-clementine-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Hiswe/compta-clementine-test.git",
+  "author": "Hiswe <hiswehalya@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "toc": "doctoc *.md"
+  },
+  "devDependencies": {
+    "doctoc": "^1.4.0"
+  }
+}
