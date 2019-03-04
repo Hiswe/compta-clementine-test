@@ -1,8 +1,8 @@
 export default {
   plugins: [`@/plugins/vue-libraries.js`],
   axios: {
-    // baseURL: `http://localhost:4060/v1`,
-    // browserBaseURL: `http://localhost:4060/v1`,
+    baseURL: `http://localhost:4070/todos`,
+    browserBaseURL: `http://localhost:4070/todos`,
     // credentials: true,
   },
   css: [`vuetify/dist/vuetify.min.css`],

@@ -8,6 +8,7 @@ const compress = require('koa-compress')
 const json = require('koa-json')
 const logger = require('koa-logger')
 const Router = require('koa-router')
+const cors = require('@koa/cors')
 
 const config = require('./config')
 
@@ -45,6 +46,8 @@ app.use(async function handleApiError(ctx, next) {
 //----- ROUTER
 
 const todos = require('./todos')
+
+app.use(cors({}))
 
 const apiRouter = new Router({
   prefix: `/todos`,

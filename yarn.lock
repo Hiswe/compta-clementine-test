@@ -672,6 +672,13 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@koa/cors@^2.2.3":
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/@koa/cors/-/cors-2.2.3.tgz#c32a9907acbee1e72fedfb0b9ac840d2e6f9be57"
+  integrity sha512-tCVVXa39ETsit5kGBtEWWimjLn1sDaeu8+0phgb8kT3GmBDZOykkI3ZO8nMjV2p3MGkJI4K5P+bxR8Ztq0bwsA==
+  dependencies:
+    vary "^1.1.2"
+
 "@nuxt/babel-preset-app@2.4.5":
   version "2.4.5"
   resolved "https://registry.yarnpkg.com/@nuxt/babel-preset-app/-/babel-preset-app-2.4.5.tgz#707043fe4686b7375df0917cca9134b7681ae9bf"

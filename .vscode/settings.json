@@ -5,7 +5,8 @@
     "sindresorhus",
     "slugify",
     "todos",
-    "vuetify"
+    "vuetify",
+    "vuex"
   ],
 
   "files.associations": {
