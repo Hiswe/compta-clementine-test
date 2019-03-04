@@ -1,4 +1,6 @@
 .nuxt
+.compta-clementinerc
+async-db.json
 
 # Logs
 logs
