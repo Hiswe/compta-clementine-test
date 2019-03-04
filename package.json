@@ -5,10 +5,24 @@
   "repository": "https://github.com/Hiswe/compta-clementine-test.git",
   "author": "Hiswe <hiswehalya@gmail.com>",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.15.1",
+    "yarn": ">=1.13.0"
+  },
   "scripts": {
+    "dev": "nuxt",
     "toc": "doctoc *.md"
   },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.4.0",
+    "nuxt": "^2.4.5",
+    "vuetify": "^1.5.4"
+  },
   "devDependencies": {
-    "doctoc": "^1.4.0"
+    "doctoc": "^1.4.0",
+    "node-sass": "^4.11.0",
+    "pug": "^2.0.3",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0"
   }
 }
