@@ -2,12 +2,15 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 
 Vue.use(Vuetify, {
-  // theme: {
-  //   primary: '#4c409a',
-  //   secondary: '#b0bec5',
-  //   accent: '#2297cc',
-  //   error: '#b71c1c',
-  // },
+  theme: {
+    primary: `#ff7e3c`,
+    secondary: `#3adda2`,
+    accent: `#918dff`,
+    error: `#e91e63`,
+    warning: `#ffc107`,
+    info: `#03a9f4`,
+    success: `#8bc34a`,
+  },
   options: {
     customProperties: true,
   },

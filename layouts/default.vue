@@ -1,0 +1,46 @@
+<script>
+export default {
+  name: `cc-layout`,
+}
+</script>
+
+<template lang="pug">
+v-app.cc-app
+  v-toolbar(color="primary" dark fixed app)
+      v-toolbar-title.cc-title
+        nuxt-link.cc-title__link(to="/")
+          img(
+            src="/compta-clementine-logo_light.svg"
+            width="138"
+            height="26"
+            alt="logo compta clementine"
+          )
+          | 's Todo
+  v-content
+    v-container(fluid fill-height)
+      nuxt
+      //- <v-layout
+      //-   justify-center
+      //-   align-center
+      //- >
+      //- nuxt
+  //- nuxt-link.cc-logo.primary(to="/")
+  //-   span.white--text Compta's Todo
+</template>
+
+<style lang="scss" scoped>
+.cc-title {
+  * {
+    vertical-align: sub;
+  }
+  img {
+    transform: translateY(-1px);
+  }
+}
+.cc-title__link {
+  color: currentColor;
+  text-decoration: none;
+  font-weight: 700;
+}
+</style>
+

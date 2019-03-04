@@ -5,7 +5,11 @@ export default {
     // browserBaseURL: `http://localhost:4060/v1`,
     // credentials: true,
   },
+  css: [`vuetify/dist/vuetify.min.css`],
   modules: [`@nuxtjs/axios`],
+  loading: {
+    color: `#3adda2`,
+  },
   head: {
     meta: [
       { charset: `utf-8` },
