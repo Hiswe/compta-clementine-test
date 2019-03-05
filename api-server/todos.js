@@ -28,10 +28,15 @@ async function createTodo(ctx) {
     createdAt: new Date().valueOf(),
     updatedAt: new Date().valueOf(),
   }
-  const todo = await db
+  const { id } = newTodo
+  await db
     .get(`todos`)
     .push(newTodo)
     .write()
+  const todo = await db
+    .get(`todos`)
+    .find({ id })
+    .value()
   ctx.body = todo
 }
 

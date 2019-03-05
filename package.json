@@ -26,6 +26,7 @@
     "koa-json": "^2.0.2",
     "koa-logger": "^3.2.0",
     "koa-router": "^7.4.0",
+    "lodash.clonedeep": "^4.5.0",
     "lowdb": "^1.0.0",
     "node-json-db": "^0.10.0",
     "nuxt": "^2.4.5",
