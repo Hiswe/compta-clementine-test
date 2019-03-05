@@ -1,0 +1,8 @@
+/* accord native elements to website style */
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  text-align: inherit;
+}

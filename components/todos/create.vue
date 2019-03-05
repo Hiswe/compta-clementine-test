@@ -2,9 +2,13 @@
 import { mapActions } from 'vuex'
 
 import { TODOS, TODOS_CREATE } from '~/store/todos'
+import CcTextField from '~/components/form/text-field'
 
 export default {
   name: `cc-todos-create`,
+  components: {
+    CcTextField,
+  },
   data() {
     return {
       title: ``,
@@ -13,6 +17,7 @@ export default {
   },
   methods: {
     async onSubmit() {
+      console.log(`submit`)
       this.loading = true
       await this.todosCreate({ todo: { title: this.title } })
       this.title = ``
@@ -26,21 +31,19 @@ export default {
 </script>
 
 <template lang="pug">
-form.cc-todos-create(
-  @submit.prevent="onSubmit"
+v-list-tile(
+  tag="form"
+  @submit.native.prevent="onSubmit"
 )
-  input(
-    type="text"
-    v-model="title"
-    :disabled="loading"
-  )
+  v-list-tile-avatar
+  v-list-tile-content
+    cc-text-field(
+      v-model="title"
+      name="new-todo-title"
+      placeholder="what needs to be done?"
+      :disabled="loading"
+    )
 </template>
 
 <style lang="scss" scoped>
-.cc-todos-create {
-  input {
-    border: 1px solid black;
-  }
-}
 </style>
-

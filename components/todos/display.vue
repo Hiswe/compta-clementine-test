@@ -1,12 +1,18 @@
 <script>
-import Vue from 'vue'
+// import Vue from 'vue'
 import { mapActions } from 'vuex'
 import cloneDeep from 'lodash.clonedeep'
 
 import { TODOS, TODOS_UPDATE, TODOS_DELETE } from '~/store/todos'
+import CcCheckbox from '~/components/form/checkbox'
+import CcTextField from '~/components/form/text-field'
 
 export default {
   name: `cc-todos-display`,
+  components: {
+    CcCheckbox,
+    CcTextField,
+  },
   props: {
     todo: Object,
   },
@@ -23,9 +29,9 @@ export default {
   methods: {
     toggleEditing() {
       this.isEditingTitle = !this.isEditingTitle
-      if (this.isEditingTitle) {
-        Vue.nextTick(() => this.$refs.inputTitle.focus())
-      }
+      // if (this.isEditingTitle) {
+      //   Vue.nextTick(() => this.$refs.inputTitle.focus())
+      // }
     },
     updateTodo() {
       this.todosUpdate({ todo: this.form })
@@ -46,38 +52,32 @@ export default {
 </script>
 
 <template lang="pug">
-form.cc-todos-display(
-  @dblclick="toggleEditing"
-  @submit.prevent="updateTitle"
+v-list-tile.cc-todos-display(
+  tag="form"
+  avatar
   :class="{'cc-todos-display--is-editing': isEditingTitle}"
+  @dblclick.native="toggleEditing"
+  @submit.prevent.native="updateTitle"
 )
-  input(
-    type="checkbox"
-    v-model="form.completed"
-    @change="updateTodo"
-  )
-  input(
-    v-show="isEditingTitle"
-    v-model="form.title"
-    ref="inputTitle"
-    @blur="updateTitle"
-  )
-  p(
+  v-list-tile-avatar
+    cc-checkbox(
+      v-model="form.completed"
+      :name="`${todo.id}[completed]`"
+      @input="updateTodo"
+    )
+  v-list-tile-content
+    cc-text-field(
+      v-model="form.title"
+      :name="`${todo.id}[title]`"
+      :readonly="!isEditingTitle"
+      :disabled="form.completed"
+      @blur.native="updateTitle"
+    )
+  v-list-tile-action(
     v-show="!isEditingTitle"
-  ) {{form.title}}
-
-  button(type="button" @click="removeTodo") remove
-
+  )
+    v-btn(icon ripple @click="removeTodo")
+      v-icon(color="grey lighten-1") close
 </template>
 
-<style lang="scss" scoped>
-.cc-todos-display {
-  border: solid 1px green;
-}
-.cc-todos-display--is-editing {
-  border-color: red;
-}
-input:focus {
-  background: pink;
-}
-</style>
+<style lang="scss" scoped></style>

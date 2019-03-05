@@ -5,7 +5,7 @@ export default {
     browserBaseURL: `http://localhost:4070/todos`,
     // credentials: true,
   },
-  css: [`vuetify/dist/vuetify.min.css`],
+  css: [`vuetify/dist/vuetify.min.css`, `@/assets/global.css`],
   modules: [`@nuxtjs/axios`],
   loading: {
     color: `#3adda2`,

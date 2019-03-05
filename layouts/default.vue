@@ -18,14 +18,9 @@ v-app.cc-app
           | 's Todo
   v-content
     v-container(fluid fill-height)
-      nuxt
-      //- <v-layout
-      //-   justify-center
-      //-   align-center
-      //- >
-      //- nuxt
-  //- nuxt-link.cc-logo.primary(to="/")
-  //-   span.white--text Compta's Todo
+      v-layout(row)
+        v-flex( xs12 sm6 offset-sm3)
+          nuxt
 </template>
 
 <style lang="scss" scoped>
