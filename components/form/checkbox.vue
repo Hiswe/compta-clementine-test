@@ -65,12 +65,9 @@ label.cc-checkbox(
   width: 1px !important;
 }
 .cc-checkbox__icon {
-  fill: var(--v-primary-lighten5);
-  stroke-width: 1px;
-  stroke: var(--v-primary-lighten3);
+  fill: var(--v-primary-lighten3);
 }
 .cc-checkbox__input:checked ~ .cc-checkbox__icon {
   fill: var(--v-primary-base);
-  stroke-width: 0;
 }
 </style>

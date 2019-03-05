@@ -4,6 +4,10 @@ export const state = () => {
   }
 }
 
+export const TODOS_GETTER_LEFT = `TODOS_GETTER_LEFT`
+export const TODOS_GETTER_ACTIVE = `TODOS_GETTER_ACTIVE`
+export const TODOS_GETTER_DONE = `TODOS_GETTER_DONE`
+
 export const TODOS = `todos`
 export const TODOS_LIST = `TODOS_LIST`
 export const TODOS_CREATE = `TODOS_CREATE`
@@ -15,6 +19,22 @@ const M_TODOS_LIST = `M_TODOS_LIST`
 const M_TODOS_CREATE = `M_TODOS_CREATE`
 const M_TODOS_UPDATE = `M_TODOS_UPDATE`
 const M_TODOS_DELETE = `M_TODOS_DELETE`
+
+export const getters = {
+  [TODOS_GETTER_LEFT](state) {
+    const left = state.list.reduce(
+      (acc, todo) => (todo.completed ? acc : acc + 1),
+      0,
+    )
+    return left > 1 ? `${left} items left` : `${left} item left`
+  },
+  [TODOS_GETTER_ACTIVE](state) {
+    return state.list.filter(todo => !todo.completed)
+  },
+  [TODOS_GETTER_DONE](state) {
+    return state.list.filter(todo => todo.completed)
+  },
+}
 
 export const mutations = {
   [M_TODOS_LIST](state, payload) {

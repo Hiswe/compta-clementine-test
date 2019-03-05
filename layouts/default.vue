@@ -16,6 +16,11 @@ v-app.cc-app
             alt="logo compta clementine"
           )
           | 's Todo
+      v-spacer
+      v-toolbar-items(class="hidden-sm-and-down")
+        v-btn(flat nuxt to="/") all
+        v-btn(flat nuxt to="/active") active
+        v-btn(flat nuxt to="/done") done
   v-content
     v-container(fluid fill-height)
       v-layout(row)

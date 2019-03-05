@@ -1,7 +1,7 @@
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
-import { TODOS, TODOS_LIST } from '~/store/todos'
+import { TODOS, TODOS_LIST, TODOS_GETTER_ACTIVE } from '~/store/todos'
 import ccTodosCreate from '~/components/todos/create'
 import ccTodosDisplay from '~/components/todos/display'
 import ccDoubleClickHint from '~/components/double-click-hint'
@@ -18,8 +18,8 @@ export default {
     await store.dispatch(`${TODOS}/${TODOS_LIST}`)
   },
   computed: {
-    ...mapState(TODOS, {
-      todos: `list`,
+    ...mapGetters(TODOS, {
+      todos: TODOS_GETTER_ACTIVE,
     }),
   },
 }

@@ -69,7 +69,6 @@ input.cc-text-field(
   }
   &:disabled {
     opacity: 0.5;
-    text-decoration: line-through;
   }
 }
 </style>

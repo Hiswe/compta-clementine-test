@@ -52,10 +52,9 @@ export default {
 </script>
 
 <template lang="pug">
-v-list-tile.cc-todos-display(
+v-list-tile.cc-todo(
   tag="form"
   avatar
-  :class="{'cc-todos-display--is-editing': isEditingTitle}"
   @dblclick.native="toggleEditing"
   @submit.prevent.native="updateTitle"
 )
@@ -66,7 +65,7 @@ v-list-tile.cc-todos-display(
       @input="updateTodo"
     )
   v-list-tile-content
-    cc-text-field(
+    cc-text-field.cc-todo__input(
       v-model="form.title"
       :name="`${todo.id}[title]`"
       :readonly="!isEditingTitle"
@@ -83,4 +82,8 @@ v-list-tile.cc-todos-display(
       span remove
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.cc-todo__input[disabled] {
+  text-decoration: line-through;
+}
+</style>
