@@ -4,7 +4,7 @@ export const state = () => {
   }
 }
 
-export const TODOS_GETTER_LEFT = `TODOS_GETTER_LEFT`
+export const TODOS_GETTER_LEFT_COUNT = `TODOS_GETTER_LEFT_COUNT`
 export const TODOS_GETTER_ACTIVE = `TODOS_GETTER_ACTIVE`
 export const TODOS_GETTER_DONE = `TODOS_GETTER_DONE`
 
@@ -21,12 +21,12 @@ const M_TODOS_UPDATE = `M_TODOS_UPDATE`
 const M_TODOS_DELETE = `M_TODOS_DELETE`
 
 export const getters = {
-  [TODOS_GETTER_LEFT](state) {
+  [TODOS_GETTER_LEFT_COUNT](state) {
     const left = state.list.reduce(
       (acc, todo) => (todo.completed ? acc : acc + 1),
       0,
     )
-    return left > 1 ? `${left} items left` : `${left} item left`
+    return left
   },
   [TODOS_GETTER_ACTIVE](state) {
     return state.list.filter(todo => !todo.completed)
@@ -48,7 +48,10 @@ export const mutations = {
   [M_TODOS_UPDATE](state, payload) {
     const { todo } = payload
     const todoIndex = state.list.findIndex(item => item.id === todo.id)
-    state.list[todoIndex] = todo
+    // handle Vue reactivity caveat
+    // • https://vuejs.org/v2/guide/list.html#Caveats
+    // • will be handled in Vue 3
+    state.list.splice(todoIndex, 1, todo)
   },
   [M_TODOS_DELETE](state, payload) {
     const { todo } = payload
