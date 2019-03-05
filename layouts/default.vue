@@ -32,8 +32,8 @@ v-app.cc-app
             alt="logo compta clementine"
           )
           | 's Todo
-    v-spacer
-    v-toolbar-items(class="hidden-sm-and-down")
+    v-spacer.hidden-xs-only
+    v-toolbar-items.hidden-xs-only
       v-btn(flat nuxt to="/") all
       v-btn(flat nuxt to="/active") active
       v-btn(flat nuxt to="/done") done
@@ -42,6 +42,10 @@ v-app.cc-app
       v-layout(row)
         v-flex( xs12 sm6 offset-sm3)
           nuxt
+    v-bottom-nav.hidden-sm-and-up(fixed :value="true" )
+      v-btn(flat nuxt to="/") all
+      v-btn(flat nuxt to="/active") active
+      v-btn(flat nuxt to="/done") done
 </template>
 
 <style lang="scss" scoped>
