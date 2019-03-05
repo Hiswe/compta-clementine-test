@@ -1,3 +1,7 @@
+:root {
+  --page-transition: 0.25s;
+}
+
 /* accord native elements to website style */
 button,
 input,
@@ -5,4 +9,26 @@ textarea,
 select {
   font: inherit;
   text-align: inherit;
+}
+.page-enter-active,
+.page-leave-active {
+  transition-duration: var(--page-transition);
+}
+
+.page-enter-active {
+  transition-delay: var(--page-transition);
+}
+.page-enter-active,
+.page-leave-active {
+  transition-property: opacity;
+  transition-duration: var(--page-transition);
+}
+
+.page-enter-active {
+  transition-delay: var(--page-transition);
+}
+
+.page-enter,
+.page-leave-active {
+  opacity: 0;
 }

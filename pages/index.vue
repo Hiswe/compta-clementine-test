@@ -13,6 +13,7 @@ export default {
     ccTodosDisplay,
     ccDoubleClickHint,
   },
+  transition: `page`,
   async fetch(nuxtCtx) {
     const { store } = nuxtCtx
     await store.dispatch(`${TODOS}/${TODOS_LIST}`)
