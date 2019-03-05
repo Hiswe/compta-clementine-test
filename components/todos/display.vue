@@ -76,8 +76,11 @@ v-list-tile.cc-todos-display(
   v-list-tile-action(
     v-show="!isEditingTitle"
   )
-    v-btn(icon ripple @click="removeTodo")
-      v-icon(color="grey lighten-1") close
+    v-tooltip(top)
+      template(v-slot:activator="{ on }")
+        v-btn(icon ripple @click="removeTodo" v-on="on")
+          v-icon(color="grey lighten-1") close
+      span remove
 </template>
 
 <style lang="scss" scoped></style>

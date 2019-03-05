@@ -24,13 +24,15 @@ export default {
 </script>
 
 <template lang="pug">
-v-card
-  v-list.cc-todos-list
-    cc-todos-create
-    template(v-for="todo in todos")
-      v-divider
-      cc-todos-display(:todo="todo" :key="todo.id")
-  p double click to edit a todo
+main(role="main")
+  v-card.elevation-6
+    v-list.cc-todos-list
+      cc-todos-create
+      template(v-for="todo in todos")
+        v-divider
+        cc-todos-display(:todo="todo" :key="todo.id")
+  v-card.mt-4.pa-4.text-sm-center
+    | double click to edit a todo
 </template>
 
 <style lang="scss" scoped>
