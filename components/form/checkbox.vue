@@ -67,6 +67,9 @@ label.cc-checkbox(
 .cc-checkbox__icon {
   fill: var(--v-primary-lighten3);
 }
+.cc-checkbox__icon {
+  transition: fill 0.25s;
+}
 .cc-checkbox__input:checked ~ .cc-checkbox__icon {
   fill: var(--v-primary-base);
 }

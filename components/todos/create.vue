@@ -51,6 +51,11 @@ v-list-tile(
       placeholder="what needs to be done?"
       :disabled="loading"
     )
+  v-list-tile-action
+    //- use mousedown to not interfere with blur events
+    //- • this is to keep a button for mobile
+    v-btn(icon ripple @mousedown.native="onSubmit")
+      v-icon(color="secondary darken-2") add
 </template>
 
 <style lang="scss" scoped>

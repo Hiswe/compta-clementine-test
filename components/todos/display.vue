@@ -1,5 +1,4 @@
 <script>
-// import Vue from 'vue'
 import { mapActions } from 'vuex'
 import cloneDeep from 'lodash.clonedeep'
 
@@ -61,11 +60,13 @@ v-list-tile.cc-todo(
   @submit.prevent.native="updateTitle"
 )
   v-list-tile-avatar
-    cc-checkbox(
-      v-model="form.completed"
-      :name="`${todo.id}[completed]`"
-      @input="updateTodo"
-    )
+    v-scale-transition
+      cc-checkbox(
+        v-model="form.completed"
+        :name="`${todo.id}[completed]`"
+        @input="updateTodo"
+        v-show="!isEditingTitle"
+      )
   v-list-tile-content
     cc-text-field.cc-todo__input(
       v-model="form.title"
@@ -74,11 +75,13 @@ v-list-tile.cc-todo(
       :disabled="form.completed"
       @blur.native="updateTitle"
     )
-  v-list-tile-action(
-    v-show="!isEditingTitle"
-  )
-    v-btn(icon ripple @click="removeTodo" v-on="on")
+  v-list-tile-action
+    //- use mousedown to not interfere with blur events
+    //- • this is to keep a button for mobile
+    v-btn(v-if="!isEditingTitle" icon ripple @mousedown.native="removeTodo")
       v-icon(color="grey lighten-1") close
+    v-btn(v-else icon ripple @mousedown.native="updateTitle")
+      v-icon(color="secondary darken-2") check
 </template>
 
 <style lang="scss" scoped>

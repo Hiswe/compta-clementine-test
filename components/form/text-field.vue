@@ -63,9 +63,11 @@ input.cc-text-field(
   height: 100%;
   padding: 1em;
 
+  &[readonly] {
+    outline: none;
+  }
   &:focus:not([readonly]) {
-    outline: 1px solid var(--v-primary-base);
-    background: var(--v-primary-lighten5);
+    // background: var(--v-primary-lighten5);
   }
   &:disabled {
     opacity: 0.5;
