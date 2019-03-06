@@ -40,7 +40,7 @@ v-app.cc-app
   v-content
     v-container(fluid fill-height)
       v-layout(row)
-        v-flex(xs12 sm6 offset-sm3)
+        v-flex(xs12 sm10 offset-sm1 md6 offset-md3)
           nuxt
     v-bottom-nav.hidden-sm-and-up(fixed :value="true" )
       v-btn(flat nuxt to="/") all
