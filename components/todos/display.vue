@@ -53,10 +53,13 @@ export default {
 </script>
 
 <template lang="pug">
+//- don't use dblclick for mobile support
+//- • don't want to include another library
+//- • could have been:
+//-   @dblclick.native="toggleEditing"
 v-list-tile.cc-todo(
   tag="form"
   avatar
-  @dblclick.native="toggleEditing"
   @submit.prevent.native="updateTitle"
 )
   v-list-tile-avatar
@@ -74,6 +77,7 @@ v-list-tile.cc-todo(
       :readonly="!isEditingTitle"
       :disabled="form.completed"
       @blur.native="updateTitle"
+      @click.native="toggleEditing"
     )
   v-list-tile-action
     //- use mousedown to not interfere with blur events

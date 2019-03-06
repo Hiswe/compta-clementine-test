@@ -4,14 +4,12 @@ import { mapGetters } from 'vuex'
 import { TODOS, TODOS_LIST, TODOS_GETTER_ACTIVE } from '~/store/todos'
 import ccTodosCreate from '~/components/todos/create'
 import ccTodosDisplay from '~/components/todos/display'
-import ccDoubleClickHint from '~/components/double-click-hint'
 
 export default {
   name: `page-index`,
   components: {
     ccTodosCreate,
     ccTodosDisplay,
-    ccDoubleClickHint,
   },
   transition: `page`,
   async fetch(nuxtCtx) {
@@ -34,7 +32,6 @@ main(role="main")
       template(v-for="todo in todos")
         v-divider
         cc-todos-display(:todo="todo" :key="todo.id")
-  cc-double-click-hint
 </template>
 
 <style lang="scss" scoped>

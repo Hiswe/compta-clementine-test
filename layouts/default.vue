@@ -6,6 +6,13 @@ import { TODOS, TODOS_GETTER_LEFT_COUNT } from '~/store/todos'
 export default {
   name: `cc-layout`,
   computed: {
+    // fix maring when have a bottom navigation
+    // • https://github.com/vuetifyjs/vuetify/issues/2895
+    moveForBottomNavStyle() {
+      if (this.$vuetify.breakpoint.smAndDown) {
+        return `padding-bottom: 65px`
+      }
+    },
     ...mapGetters(TODOS, {
       left: TODOS_GETTER_LEFT_COUNT,
     }),
@@ -37,7 +44,7 @@ v-app.cc-app
       v-btn(flat nuxt to="/") all
       v-btn(flat nuxt to="/active") active
       v-btn(flat nuxt to="/done") done
-  v-content
+  v-content(:style="moveForBottomNavStyle")
     v-container(fluid fill-height)
       v-layout(row)
         v-flex(xs12 sm10 offset-sm1 md6 offset-md3)

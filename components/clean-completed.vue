@@ -10,6 +10,13 @@ import {
 export default {
   name: `cc-clean-completed`,
   computed: {
+    // fix fab button positioning when have a bottom navigation
+    // • https://github.com/vuetifyjs/vuetify/issues/2895
+    moveForBottomNavStyle() {
+      if (this.$vuetify.breakpoint.smAndDown) {
+        return `bottom: 65px`
+      }
+    },
     ...mapGetters(TODOS, {
       hasCompleted: TODOS_GETTER_HAS_COMPLETED,
     }),
@@ -24,19 +31,15 @@ export default {
 
 <template lang="pug">
 v-scale-transition
-  v-tooltip(left)
-    template(v-slot:activator="{ on }")
-      v-btn(
-        fab
-        fixed
-        bottom
-        right
-        color="secondary"
-        @click="cleanTodos"
-        v-if="hasCompleted"
-        v-on="on"
-      )
-        v-icon delete_sweep
-    span clean completed
+  v-btn(
+    fab
+    fixed
+    bottom
+    right
+    color="secondary"
+    :style="moveForBottomNavStyle"
+    @click="cleanTodos"
+    v-if="hasCompleted"
+  )
+    v-icon delete_sweep
 </template>
-

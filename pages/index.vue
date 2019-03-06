@@ -4,7 +4,6 @@ import { mapState } from 'vuex'
 import { TODOS, TODOS_LIST } from '~/store/todos'
 import ccTodosCreate from '~/components/todos/create'
 import ccTodosDisplay from '~/components/todos/display'
-import ccDoubleClickHint from '~/components/double-click-hint'
 import ccCleanCompleted from '~/components/clean-completed'
 
 export default {
@@ -12,7 +11,6 @@ export default {
   components: {
     ccTodosCreate,
     ccTodosDisplay,
-    ccDoubleClickHint,
     ccCleanCompleted,
   },
   transition: `page`,
@@ -36,7 +34,6 @@ main(role="main")
       template(v-for="todo in todos")
         v-divider
         cc-todos-display(:todo="todo" :key="todo.id")
-  cc-double-click-hint
   cc-clean-completed
 </template>
 
