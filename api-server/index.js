@@ -14,7 +14,13 @@ const config = require('./config')
 
 const app = new Koa()
 
-app.use(bodyParser())
+app.use(
+  bodyParser({
+    strict: false,
+    // enable body parsing on delete methods
+    parsedMethods: [`POST`, `PUT`, `PATCH`, `DELETE`],
+  }),
+)
 app.use(compress())
 app.use(json())
 app.use(logger())
@@ -55,6 +61,8 @@ const apiRouter = new Router({
 
 apiRouter.get(`/`, todos.list)
 apiRouter.post(`/`, todos.create)
+apiRouter.put(`/`, todos.bulkUpdate)
+apiRouter.del(`/`, todos.bulkDelete)
 apiRouter.get(`/:id`, todos.read)
 apiRouter.put(`/:id`, todos.update)
 apiRouter.del(`/:id`, todos.delete)

@@ -26,12 +26,14 @@ export default {
     // local copy for editing
     this.form = cloneDeep(this.todo)
   },
+  watch: {
+    todo(updatedTodo) {
+      this.form = cloneDeep(updatedTodo)
+    },
+  },
   methods: {
     toggleEditing() {
       this.isEditingTitle = !this.isEditingTitle
-      // if (this.isEditingTitle) {
-      //   Vue.nextTick(() => this.$refs.inputTitle.focus())
-      // }
     },
     updateTodo() {
       this.todosUpdate({ todo: this.form })

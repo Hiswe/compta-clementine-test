@@ -1,7 +1,7 @@
 <script>
 import { mapActions } from 'vuex'
 
-import { TODOS, TODOS_CREATE } from '~/store/todos'
+import { TODOS, TODOS_CREATE, TODOS_TOGGLE_ALL } from '~/store/todos'
 import CcTextField from '~/components/form/text-field'
 
 export default {
@@ -17,14 +17,17 @@ export default {
   },
   methods: {
     async onSubmit() {
-      console.log(`submit`)
       this.loading = true
       await this.todosCreate({ todo: { title: this.title } })
       this.title = ``
       this.loading = false
     },
+    toggleAll() {
+      this.todosToggleAll()
+    },
     ...mapActions(TODOS, {
       todosCreate: TODOS_CREATE,
+      todosToggleAll: TODOS_TOGGLE_ALL,
     }),
   },
 }
@@ -36,6 +39,11 @@ v-list-tile(
   @submit.native.prevent="onSubmit"
 )
   v-list-tile-avatar
+    v-tooltip(top)
+      template(v-slot:activator="{ on }")
+        v-btn(icon ripple @click="toggleAll" v-on="on")
+          v-icon(color="grey darken-2") keyboard_arrow_down
+      span toggle all on/off
   v-list-tile-content
     cc-text-field(
       v-model="title"

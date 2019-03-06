@@ -5,6 +5,8 @@
     "sindresorhus",
     "slugify",
     "todos",
+    "uncheck",
+    "uncomplete",
     "vuetify",
     "vuex"
   ],

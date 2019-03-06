@@ -1,3 +1,6 @@
+import Vue from 'vue'
+import shortid from 'shortid'
+
 export const state = () => {
   return {
     list: [],
@@ -14,10 +17,12 @@ export const TODOS_CREATE = `TODOS_CREATE`
 export const TODOS_READ = `TODOS_READ`
 export const TODOS_UPDATE = `TODOS_UPDATE`
 export const TODOS_DELETE = `TODOS_DELETE`
+export const TODOS_TOGGLE_ALL = `TODOS_TOGGLE_ALL`
 
 const M_TODOS_LIST = `M_TODOS_LIST`
 const M_TODOS_CREATE = `M_TODOS_CREATE`
 const M_TODOS_UPDATE = `M_TODOS_UPDATE`
+const M_TODOS_BULK_UPDATE = `M_TODOS_BULK_UPDATE`
 const M_TODOS_DELETE = `M_TODOS_DELETE`
 
 export const getters = {
@@ -39,7 +44,7 @@ export const getters = {
 export const mutations = {
   [M_TODOS_LIST](state, payload) {
     const { todos } = payload
-    state.list = todos
+    Vue.set(state, `list`, todos)
   },
   [M_TODOS_CREATE](state, payload) {
     const { todo } = payload
@@ -58,6 +63,13 @@ export const mutations = {
     const todoIndex = state.list.findIndex(item => item.id === todo.id)
     state.list.splice(todoIndex, 1)
   },
+  [M_TODOS_BULK_UPDATE](state, payload) {
+    // for now we only accept a full todo list
+    // • because bulk update is only used with toggle all
+    // • might optimize this in the future
+    const { todos } = payload
+    Vue.set(state, `list`, todos)
+  },
 }
 
 export const actions = {
@@ -67,13 +79,44 @@ export const actions = {
     const todos = await $axios.$get(`/`)
     commit(M_TODOS_LIST, { todos })
   },
+  // better for the user experience to:
+  // • update the store
+  // • persist it in DB
+  // → doesn't have to wait to the request to have an updated UI
   async [TODOS_CREATE](vuexCtx, payload) {
     const { commit } = vuexCtx
     const { $axios } = this
     const { todo } = payload
-    const newTodo = await $axios.$post(`/`, todo)
+    const newTodo = {
+      title: todo.title.trim(),
+      completed: false,
+      id: shortid.generate(),
+    }
     commit(M_TODOS_CREATE, { todo: newTodo })
+    const dbNewTodo = await $axios.$post(`/`, newTodo)
+    commit(M_TODOS_UPDATE, { todo: dbNewTodo })
   },
+  async [TODOS_TOGGLE_ALL](vuexCtx, payload) {
+    const { commit, state } = vuexCtx
+    const { $axios } = this
+    let isAllComplete = false
+    for (let todo of state.list) {
+      if (!todo.completed) {
+        isAllComplete = true
+        break
+      }
+    }
+    const updatedTodos = state.list.map(todo => ({
+      ...todo,
+      completed: isAllComplete,
+    }))
+    commit(M_TODOS_BULK_UPDATE, { todos: updatedTodos })
+    const dbUpdatedTodo = await $axios.$put(`/`, updatedTodos)
+    commit(M_TODOS_BULK_UPDATE, { todos: dbUpdatedTodo })
+  },
+  // below this point we should
+  // • update store
+  // • then persist in DB
   async [TODOS_UPDATE](vuexCtx, payload) {
     const { commit } = vuexCtx
     const { $axios } = this
