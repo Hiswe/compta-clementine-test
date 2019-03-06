@@ -13,6 +13,7 @@
     "dev": "run-p dev:*",
     "dev:back": "nodemon api-server/index.js --ignore *db.json --ignore *async-db.json",
     "dev:front": "nuxt",
+    "start": "yarn dev",
     "toc": "doctoc *.md"
   },
   "dependencies": {
