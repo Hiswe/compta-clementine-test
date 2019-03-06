@@ -5,6 +5,7 @@ import { TODOS, TODOS_LIST } from '~/store/todos'
 import ccTodosCreate from '~/components/todos/create'
 import ccTodosDisplay from '~/components/todos/display'
 import ccDoubleClickHint from '~/components/double-click-hint'
+import ccCleanCompleted from '~/components/clean-completed'
 
 export default {
   name: `page-index`,
@@ -12,6 +13,7 @@ export default {
     ccTodosCreate,
     ccTodosDisplay,
     ccDoubleClickHint,
+    ccCleanCompleted,
   },
   transition: `page`,
   async fetch(nuxtCtx) {
@@ -35,6 +37,7 @@ main(role="main")
         v-divider
         cc-todos-display(:todo="todo" :key="todo.id")
   cc-double-click-hint
+  cc-clean-completed
 </template>
 
 <style lang="scss" scoped>

@@ -66,9 +66,6 @@ input.cc-text-field(
   &[readonly] {
     outline: none;
   }
-  &:focus:not([readonly]) {
-    // background: var(--v-primary-lighten5);
-  }
   &:disabled {
     opacity: 0.5;
   }

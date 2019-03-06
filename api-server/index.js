@@ -62,7 +62,8 @@ const apiRouter = new Router({
 apiRouter.get(`/`, todos.list)
 apiRouter.post(`/`, todos.create)
 apiRouter.put(`/`, todos.bulkUpdate)
-apiRouter.del(`/`, todos.bulkDelete)
+// has an empty body if using `.del`
+apiRouter.post(`/bulk-delete`, todos.bulkDelete)
 apiRouter.get(`/:id`, todos.read)
 apiRouter.put(`/:id`, todos.update)
 apiRouter.del(`/:id`, todos.delete)

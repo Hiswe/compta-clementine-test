@@ -3,11 +3,13 @@ import { mapGetters } from 'vuex'
 
 import { TODOS, TODOS_LIST, TODOS_GETTER_DONE } from '~/store/todos'
 import ccTodosDisplay from '~/components/todos/display'
+import ccCleanCompleted from '~/components/clean-completed'
 
 export default {
   name: `page-index`,
   components: {
     ccTodosDisplay,
+    ccCleanCompleted,
   },
   transition: `page`,
   async fetch(nuxtCtx) {
@@ -29,6 +31,7 @@ main(role="main")
       template(v-for="todo in todos")
         v-divider
         cc-todos-display(:todo="todo" :key="todo.id")
+  cc-clean-completed
 </template>
 
 <style lang="scss" scoped>
