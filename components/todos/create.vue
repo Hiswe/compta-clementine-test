@@ -34,7 +34,7 @@ export default {
 </script>
 
 <template lang="pug">
-v-list-tile(
+v-card.elevation-4.mb-4: v-list-tile(
   tag="form"
   @submit.native.prevent="onSubmit"
 )

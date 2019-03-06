@@ -30,9 +30,9 @@ export default {
 
 <template lang="pug">
 main(role="main")
-  v-card.elevation-6
+  cc-todos-create
+  v-card.elevation-4
     v-list.cc-todos-list
-      cc-todos-create
       template(v-for="todo in todos")
         v-divider
         cc-todos-display(:todo="todo" :key="todo.id")
