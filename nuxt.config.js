@@ -11,6 +11,7 @@ export default {
     color: `#3adda2`,
   },
   head: {
+    titleTemplate: `Compta Clementine's todo – %s`,
     meta: [
       { charset: `utf-8` },
       { name: `viewport`, content: `width=device-width, initial-scale=1` },

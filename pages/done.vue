@@ -6,12 +6,15 @@ import ccTodosDisplay from '~/components/todos/display'
 import ccCleanCompleted from '~/components/clean-completed'
 
 export default {
-  name: `page-index`,
+  name: `page-done`,
   components: {
     ccTodosDisplay,
     ccCleanCompleted,
   },
   transition: `page`,
+  head: {
+    title: `already done`,
+  },
   async fetch(nuxtCtx) {
     const { store } = nuxtCtx
     await store.dispatch(`${TODOS}/${TODOS_LIST}`)

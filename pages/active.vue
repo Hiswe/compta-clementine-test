@@ -6,12 +6,15 @@ import ccTodosCreate from '~/components/todos/create'
 import ccTodosDisplay from '~/components/todos/display'
 
 export default {
-  name: `page-index`,
+  name: `page-active`,
   components: {
     ccTodosCreate,
     ccTodosDisplay,
   },
   transition: `page`,
+  head: {
+    title: `active`,
+  },
   async fetch(nuxtCtx) {
     const { store } = nuxtCtx
     await store.dispatch(`${TODOS}/${TODOS_LIST}`)

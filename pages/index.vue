@@ -14,6 +14,9 @@ export default {
     ccCleanCompleted,
   },
   transition: `page`,
+  head: {
+    title: `all`,
+  },
   async fetch(nuxtCtx) {
     const { store } = nuxtCtx
     await store.dispatch(`${TODOS}/${TODOS_LIST}`)
