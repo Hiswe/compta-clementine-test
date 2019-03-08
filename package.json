@@ -29,7 +29,6 @@
     "koa-router": "^7.4.0",
     "lodash.clonedeep": "^4.5.0",
     "lowdb": "^1.0.0",
-    "node-json-db": "^0.10.0",
     "nuxt": "^2.4.5",
     "rc": "^1.2.8",
     "shortid": "^2.2.14",
